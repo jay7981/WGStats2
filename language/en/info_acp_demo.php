@@ -19,5 +19,6 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'ACP_WGSTATS_TITLE'			=> 'Demo Module',
+	'ACP_WGSTATS_TITLE'			=> 'Wargaming Stats',
+	'ACP_WGSTATS'					=> 'Settings',
 ));

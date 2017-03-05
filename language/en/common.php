@@ -19,15 +19,7 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'WGSTATS_PAGE'			=> 'Demo',
-	'WGSTATS_HELLO'		=> 'Hello %s!',
-	'WGSTATS_GOODBYE'		=> 'Goodbye %s!',
-
-	'ACP_WGSTATS'					=> 'Settings',
-	'ACP_WGSTATS_GOODBYE'			=> 'Should say goodbye?',
+	'ACP_WGSTATS_WGAPIKEY'		=> 'Wargaming.net Developer API Key:',
+	'ACP_WGSTATS_INSTRUCTIONS'		=> 'Goto <a href="https://developers.wargaming.net/"><b>Developers\'s Room</b></a> and create a new app to get this apikey.',
 	'ACP_WGSTATS_SETTING_SAVED'	=> 'Settings have been saved successfully!',
-
-	'GR_WGSTATS_NOTIFICATION'	=> 'Acme demo notification',
-
-	'VIEWING_GR_WGSTATS'			=> 'Viewing Acme Demo',
 ));
