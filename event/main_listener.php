@@ -40,7 +40,7 @@ class main_listener implements EventSubscriberInterface
 		$this->helper = $helper;
 		$this->memberlist = $memberlist;
 		$user->add_lang_ext('GhostRider/WGStats', 'info_WGStats_mod');
-		$this->config['gr_wgstats_wgapikey'] = $apikey;
+		$apikey = $this->config['gr_wgstats_wgapikey'];
 	}
 	
 	public function memberlist_view_profile($event) {
