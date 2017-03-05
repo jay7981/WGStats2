@@ -1,0 +1,35 @@
+<!-- IF S_WWS_HAS_PROFILE && .wowsstats && .wowsachievs && .wowsranked -->
+<div class="panel">
+	<div class="inner">
+		<h1>World of Warships Stats:</h1>
+		<br />
+		<!-- BEGIN wowsstats -->
+		<h2>{wowsstats.WWS_LASTONICON}{wowsstats.WWS_NICKNAME}:</h2>
+		<p><b>Last Seen Online:</b> {wowsstats.WWS_LASTON}</p>
+		<p><b>Total Battles:</b> {wowsstats.WWS_TBATTLES}</p>
+		<p><b>Win / Loss / Draw:</b> {wowsstats.WWS_WINS} / {wowsstats.WWS_LOSS} / {wowsstats.WWS_DRAWS}</p>
+		<p><b>Win Ratio:</b> {wowsstats.WWS_RATIO}%</p>
+		<p><b>Total Kills:</b> {wowsstats.WWS_KILLS}</p>
+		<p><b>Total deaths:</b> {wowsstats.WWS_DEATHS}</p>
+		<p><b>K/D Ratio:</b> {wowsstats.WWS_KDRATIO}</p>
+		<!-- END wowsstats -->
+		</div>
+		<div class="inner">
+		<!-- BEGIN wowsranked -->
+		<h2>Ranked Seasons:</h2>
+		<p><em><b>Season 1</b></em> Max Rank - {wowsranked.WWSR_MAXRANK1} Starting Rank - {wowsranked.WWSR_STARTRANK1} Current Rank - {wowsranked.WWSR_RANK1}</p>
+		<p><em><b>Season 2</b></em> Max Rank - {wowsranked.WWSR_MAXRANK2} Starting Rank - {wowsranked.WWSR_STARTRANK2} Current Rank - {wowsranked.WWSR_RANK2}</p>
+		<p><em><b>Season 3</b></em> Max Rank - {wowsranked.WWSR_MAXRANK3} Starting Rank - {wowsranked.WWSR_STARTRANK3} Current Rank - {wowsranked.WWSR_RANK3}</p>
+		<p><em><b>Season 4</b></em> Max Rank - {wowsranked.WWSR_MAXRANK4} Starting Rank - {wowsranked.WWSR_STARTRANK4} Current Rank - {wowsranked.WWSR_RANK4}</p>
+		<p><em><b>Season 5</b></em> Max Rank - {wowsranked.WWSR_MAXRANK5} Starting Rank - {wowsranked.WWSR_STARTRANK5} Current Rank - {wowsranked.WWSR_RANK5}</p>
+		<p><em><b>Season 6</b></em> Max Rank - {wowsranked.WWSR_MAXRANK6} Starting Rank - {wowsranked.WWSR_STARTRANK6} Current Rank - {wowsranked.WWSR_RANK6}</p>
+		<!-- END wowsranked -->
+		</div>
+		<div class="inner">
+		<h2>Achievements:</h2>
+		<!-- BEGIN wowsachievs -->
+		{wowsachievs.WWSA_ACHIEVS}
+		<!-- END wowsachievs -->
+	</div>
+</div>
+<!-- ENDIF -->

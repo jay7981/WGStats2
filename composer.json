@@ -1,0 +1,26 @@
+{
+    "name": "GhostRider/WGStats",
+    "type": "phpbb-extension",
+    "description": "Displays players Wargaming Stats on their profiles.",
+    "homepage": "http://transformersfleet.com",
+    "version": "1.0.5-dev",
+    "time": "2017-03-05",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "GhostRider",
+            "email": "jay@angeldyne.com",
+            "homepage": "http://transformersfleet.com",
+            "role": "Depeloper"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "extra": {
+        "display-name": "Wargaming.net Stats",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.1.4,<3.2.0@dev"
+        }
+    }
+}

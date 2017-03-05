@@ -1,0 +1,21 @@
+<!-- IF S_WWS_HAS_PROFILE && .wotstats && .wotachievs && .wotranked -->
+<div class="panel">
+	<div class="inner">
+		<h1>World of Tanks:</h1>
+		<br />
+		<!-- BEGIN wotstats -->
+		<h2>{wotstats.WWS_NICKNAME}:</h2>
+		<p><b>Total Battles:</b> {wotstats.WWS_TBATTLES}</p>
+		<p><b>Win / Loss / Draw:</b> {wotstats.WWS_WINS} / {wotstats.WWS_LOSS} / {wotstats.WWS_DRAWS}</p>
+		<p><b>Win Ratio:</b> {wotstats.WWS_RATIO}%</p>
+		<p><b>Total Kills:</b> {wotstats.WWS_KILLS}</p>
+		<!-- END wotstats -->
+		</div>
+		<div class="inner">
+		<h2>Achievements:</h2>
+		<!-- BEGIN wotachievs -->
+		{wotachievs.WOTA_ACHIEVS}
+		<!-- END wotachievs -->
+	</div>
+</div>
+<!-- ENDIF -->
