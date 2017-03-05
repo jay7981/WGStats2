@@ -2,8 +2,8 @@ services:
     GhostRider.WGStats.listener:
         class: GhostRider\WGStats\event\main_listener
         arguments:
-            - @user
-            - @config
-            - @template
+            - '@user'
+            - '@config'
+            - '@template'
         tags:
             - { name: event.listener }

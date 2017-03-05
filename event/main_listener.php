@@ -14,34 +14,44 @@ namespace GhostRider\WGStats\event;
  * @ignore
  */
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use phpbb\config\config;
-use phpbb\template\template;
-use phpbb\user;
+
 
 /**
  * Wargaming.net Stats Event listener.
  */
 class main_listener implements EventSubscriberInterface
 {
-	protected $user;
-	protected $config;
-	protected $template;
+    /* @var \phpbb\user */
+    protected $user;
+	
+	/* @var \phpbb\config\config */
+    protected $config;
+
+    /* @var \phpbb\template\template */
+    protected $template;
+
+
+    /**
+     * Constructor
+     *
+     * @param \phpbb\user               $user
+     * @param \phpbb\config\config      $config
+     * @param \phpbb\template\template  $template
+
+     */
 	
 	static public function getSubscribedEvents() {
 		return array(
 			'core.memberlist_view_profile'		=> 'memberlist_view_profile',);
 	}
 
-	public function __construct(phpbb\user $user, phpbb\config\config $config, phpbb\template\template $template, $memberlist)	{
-		$this->user = $user;
-		$this->config = $config;
+	public function __construct(\phpbb\user $user, \phpbb\config\config $config, \phpbb\template\template $template)	{
+		$this->user     = $user;
+		$this->config   = $config;
 		$this->template = $template;
-		$this->memberlist = $memberlist;
-		$user->add_lang_ext('GhostRider/WGStats', 'info_WGStats_mod');
 	}
 	
 	public function memberlist_view_profile($event) {
-		$apikey = $this->config['gr_wgstats_wgapikey'];
 		$member = $event['member'];
 		$user_id = (int) $member['user_id'];
 		$profile_fields = $event['profile_fields'];
@@ -64,7 +74,8 @@ class main_listener implements EventSubscriberInterface
 			'S_WWS_HAS_PROFILE'	=> true,
 			'WWS_ID'			=> $wws_id,));
 		$ch = curl_init();
-		$apiuri = 'https://api.worldofwarships.com/wows/account/info/?application_id=a3a64dfac090e84c33c25d816e4d2ccd&account_id='.$wws_id.'&language=en';
+		$wws_apikey = $this->config['gr_wgstats_wgapikey'];
+		$apiuri = 'https://api.worldofwarships.com/wows/account/info/?application_id='.$wws_apikey.'&account_id='.$wws_id.'&language=en';
 		curl_setopt($ch, CURLOPT_URL, $apiuri);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -104,7 +115,8 @@ class main_listener implements EventSubscriberInterface
 			'S_WWS_HAS_PROFILE'	=> true,
 			'WWS_ID'			=> $wws_id,));
 		$ch = curl_init();
-		$apiuri = 'https://api.worldofwarships.com/wows/account/achievements/?application_id='.$apikey.'&account_id='.$wws_id.'&language=en';
+		$wws_apikey = $this->config['gr_wgstats_wgapikey'];
+		$apiuri = 'https://api.worldofwarships.com/wows/account/achievements/?application_id='.$wws_apikey.'&account_id='.$wws_id.'&language=en';
 		curl_setopt($ch, CURLOPT_URL, $apiuri);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -368,7 +380,8 @@ class main_listener implements EventSubscriberInterface
 			'WWS_ID'			=> $wws_id,
 		));
 		$ch = curl_init();
-		$apiuri = 'https://api.worldofwarships.com/wows/seasons/accountinfo/?application_id='.$apikey.'&account_id='.$wws_id.'&language=en';
+		$wws_apikey = $this->config['gr_wgstats_wgapikey'];
+		$apiuri = 'https://api.worldofwarships.com/wows/seasons/accountinfo/?application_id='.$wws_apikey.'&account_id='.$wws_id.'&language=en';
 		curl_setopt($ch, CURLOPT_URL, $apiuri);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -407,7 +420,8 @@ class main_listener implements EventSubscriberInterface
 			'S_WWS_HAS_PROFILE'	=> true,
 			'WWS_ID'			=> $wws_id,));
 		$ch = curl_init();
-		$apiuri = 'https://api.worldoftanks.com/wot/account/info/?application_id='.$apikey.'&account_id='.$wws_id.'&language=en';
+		$wws_apikey = $this->config['gr_wgstats_wgapikey'];
+		$apiuri = 'https://api.worldoftanks.com/wot/account/info/?application_id='.$wws_apikey.'&account_id='.$wws_id.'&language=en';
 		curl_setopt($ch, CURLOPT_URL, $apiuri);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -435,7 +449,8 @@ class main_listener implements EventSubscriberInterface
 			'S_WWS_HAS_PROFILE'	=> true,
 			'WWS_ID'			=> $wws_id,));
 		$ch = curl_init();
-		$apiuri = 'https://api.worldoftanks.com/wot/account/achievements/?application_id='.$apikey.'&language=en&account_id='.$wws_id;
+		$wws_apikey = $this->config['gr_wgstats_wgapikey'];
+		$apiuri = 'https://api.worldoftanks.com/wot/account/achievements/?application_id='.$wws_apikey.'&language=en&account_id='.$wws_id;
 		curl_setopt($ch, CURLOPT_URL, $apiuri);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -1084,7 +1099,8 @@ class main_listener implements EventSubscriberInterface
 			'S_WWS_HAS_PROFILE'	=> true,
 			'WWS_ID'			=> $wws_id,));
 		$ch = curl_init();
-		$apiuri = 'https://api.worldofwarships.com/wows/seasons/accountinfo/?application_id='.$apikey.'&account_id='.$wws_id.'&language=en';
+		$wws_apikey = $this->config['gr_wgstats_wgapikey'];
+		$apiuri = 'https://api.worldofwarships.com/wows/seasons/accountinfo/?application_id='.$wws_apikey.'&account_id='.$wws_id.'&language=en';
 		curl_setopt($ch, CURLOPT_URL, $apiuri);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
